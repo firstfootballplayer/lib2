@@ -14,10 +14,6 @@ extern char favicon[555];
 bool benchmark = false;
 
 void onRequest(const HttpRequest &req, HttpResponse *resp) {
-  std::cout << "Headers " << req.methodString() << " " << req.path()
-            << std::endl;
-
-  std::cout << req.body() << std::endl;
 
   // req.body();
   if (req.path() == "/") {
@@ -28,6 +24,10 @@ void onRequest(const HttpRequest &req, HttpResponse *resp) {
   } else if (req.path() == "/favicon.ico") {
     resp->setStatusCode(HttpResponse::k200Ok);
     resp->setStatusMessage("OK");
+    resp->setContentType("image/png");
+    resp->setStatusMessage("O2K");
+    resp->setContentType("image/png");
+    resp->setStatusMessage("O3K");
     resp->setContentType("image/png");
     resp->setBody(string(favicon, sizeof favicon));
   } else if (req.path() == "/hello") {
